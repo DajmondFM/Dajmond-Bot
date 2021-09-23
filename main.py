@@ -17,4 +17,4 @@ async def on_ready():
   print("█░█░█ █▀▀ █░░ █▀▀ █▀█ █▀▄▀█ █▀▀   █▀▄ ▄▀█ ░░█ █▀▄▀█ █▀█ █▄░█ █▀▄\n▀▄▀▄▀ ██▄ █▄▄ █▄▄ █▄█ █░▀░█ ██▄   █▄▀ █▀█ █▄█ █░▀░█ █▄█ █░▀█ █▄▀")
 
 
-client.run("ODkwNjU3MTQ5NDQ3OTY2NzUx.YUy_HA.5pqjnYjhQ6ltrecac-2OL84LZHg")
+client.run("ODkwNjU3MTQ5NDQ3OTY2NzUx.YUy_HA.OmRai4tp5Ce4vxpPCh6hFYK27eE")
