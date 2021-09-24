@@ -1,5 +1,0 @@
-discord.py=1.7.3
-env=0.1.0
-discord-py-slashcommand=3.0.1
-discord-buttons-plugin=0.1.2
-Flask=2.0.1
