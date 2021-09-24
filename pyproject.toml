@@ -6,11 +6,11 @@ authors = ["DajmondFM <<>>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-discord = "^1.7.3"
 env = "^0.1.0"
 Flask = "^2.0.1"
 discord-py-slash-command = "^3.0.1"
 discord-buttons-plugin = "^0.1.2"
+nextcord = "^2.0.0-alpha.3"
 
 [tool.poetry.dev-dependencies]
 
