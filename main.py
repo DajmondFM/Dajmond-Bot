@@ -6,7 +6,7 @@ import os
 from dotenv import load_dotenv
 
 client = commands.Bot(command_prefix="$")
-v = "v0.01"
+v = "v0.02"
 uk = "Użyto komendy "
 client.remove_command("help")
 slash = SlashCommand(client, sync_commands=True)
