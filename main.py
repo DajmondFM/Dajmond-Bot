@@ -29,5 +29,6 @@ async def ping(ctx):
   await ctx.send(f"Pong! {round(client.latency * 1000)}ms")
 
 load_dotenv()
-TOKEN = os.getenv("Token")
+TOKEN = os.getenv
+("Token")
 client.run(TOKEN)
