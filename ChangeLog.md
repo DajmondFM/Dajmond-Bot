@@ -1,6 +1,6 @@
 # ChangeLog ENG
 0.01 == First update <br>
-0.02 == Add / command, but it isn't working <br>
+0.02 == Add / command, but it dosen't work <br>
 0.03 == Add activity status <br>
 
 <br><br>
