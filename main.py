@@ -6,7 +6,7 @@ import os
 from dotenv import load_dotenv
 
 client = commands.Bot(command_prefix="$")
-v = "v0.02"
+v = "v0.03"
 uk = "Użyto komendy "
 client.remove_command("help")
 slash = SlashCommand(client, sync_commands=True)
@@ -14,6 +14,7 @@ slash = SlashCommand(client, sync_commands=True)
 
 @client.event 
 async def on_ready():
+  await client.change_presence(activity=discord.Game("Aktualna wersja bota to " + v))
   print("Zalogowaliśmy się do {0.user}".format(client))
   print("█░█░█ █▀▀ █░░ █▀▀ █▀█ █▀▄▀█ █▀▀   █▀▄ ▄▀█ ░░█ █▀▄▀█ █▀█ █▄░█ █▀▄\n▀▄▀▄▀ ██▄ █▄▄ █▄▄ █▄█ █░▀░█ ██▄   █▄▀ █▀█ █▄█ █░▀░█ █▄█ █░▀█ █▄▀")
 
