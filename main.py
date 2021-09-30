@@ -8,7 +8,7 @@ import os
 from dotenv import load_dotenv
 
 client = commands.Bot(command_prefix="$")
-v = "v0.05"
+v = "v0.06"
 uk = "Użyto komendy "
 # client.remove_command("help")
 buttons = ButtonsClient(client)
@@ -22,27 +22,15 @@ async def on_ready():
   print("█░█░█ █▀▀ █░░ █▀▀ █▀█ █▀▄▀█ █▀▀   █▀▄ ▄▀█ ░░█ █▀▄▀█ █▀█ █▄░█ █▀▄\n▀▄▀▄▀ ██▄ █▄▄ █▄▄ █▄█ █░▀░█ ██▄   █▄▀ █▀█ █▄█ █░▀░█ █▄█ █░▀█ █▄▀")
 
 @slash.slash(name="ping", description="Pokazuje opóźnienie jakie ma bot")
-async def js(ctx):
+async def ping(ctx):
   print(uk + "/Ping")
   await ctx.send(f"Pong {round(client.latency * 1000)}ms")
-
-@slash.slash(description="TEST")
-async def test(ctx):
-  await ctx.send("test")
 
 @client.command(name="ping")
 async def ping(ctx):
   print(uk + "Ping")  
   await ctx.send(f"Pong! {round(client.latency * 1000)}ms")
 
-@client.command()
-async def test(ctx):
-  await ctx.reply("test")
-
-
-
-
-# TEST
 @client.command()
 async def status(ctx):
   await buttons.send(
@@ -82,6 +70,28 @@ async def music(ctx):
 @buttons.click
 async def film(ctx):
   await client.change_presence(activity=discord.Activity(type=discord.ActivityType.custom, name="YouTube"))
+
+@client.command()
+async def nwd(ctx, cyfra1: int, cyfra2:int):
+  print(uk + "NWD")
+  licznik=0
+  while cyfra1!=cyfra2:
+    licznik+=1
+    if cyfra1>cyfra2:
+        cyfra1=cyfra1-cyfra2 
+    else:
+        cyfra2=cyfra2-cyfra1
+  await ctx.send("Pętla wykonana {} razy".format(licznik))
+  await ctx.send("NWD to: {}".format(cyfra1))
+
+#test
+# @client.command()
+# async def test(ctx):
+#   await ctx.reply("test")
+#
+# @slash.slash(description="TEST")
+# async def test(ctx):
+#   await ctx.send("test")
 
 load_dotenv()
 TOKEN = os.getenv("Token")
