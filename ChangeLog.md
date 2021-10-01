@@ -5,6 +5,7 @@
 0.04 == Fix slash commands <br>
 0.05 == Add button to commands <br>
 0.06 == Add GCD command <br>
+0.07 == Add cls command <br>
 
 <br><br>
 # ChangeLog PL
@@ -14,3 +15,4 @@
 0.04 == Naprawienie komend slash <br>
 0.05 == Dodanie przycisków do komend <br>
 0.06 == Dodanie komendy NWD <br>
+0.07 == Dodanie komendy cls <br>

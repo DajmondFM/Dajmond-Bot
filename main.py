@@ -1,14 +1,16 @@
 import discord
 from discord import channel
+from discord import message
 from discord.ext import commands, tasks
 from discord_slash import *
 from discord_buttons_plugin import  *
 import random
 import os
 from dotenv import load_dotenv
+import time
 
 client = commands.Bot(command_prefix="$")
-v = "v0.06"
+v = "v0.07"
 uk = "Użyto komendy "
 # client.remove_command("help")
 buttons = ButtonsClient(client)
@@ -83,6 +85,20 @@ async def nwd(ctx, cyfra1: int, cyfra2:int):
         cyfra2=cyfra2-cyfra1
   await ctx.send("Pętla wykonana {} razy".format(licznik))
   await ctx.send("NWD to: {}".format(cyfra1))
+
+@client.command(aliases=['purge'])
+async def cls(ctx, amount=11):
+  if(not ctx.author.guild_permissions.manage_messages):
+    await ctx.reply("Nie masz permisji!")
+    return
+  amount = amount+1
+  if amount > 101:
+    await ctx.reply("Nie mogę usunąć więcej niż 100 wiadomość")
+  else:
+    await ctx.channel.purge(limit=amount)
+    await ctx.send("Wiadomości zostały usunięte!")
+    time.sleep(1)
+    await ctx.channel.purge(limit=1)
 
 #test
 # @client.command()
