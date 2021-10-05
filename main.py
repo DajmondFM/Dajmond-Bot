@@ -73,18 +73,16 @@ async def music(ctx):
 async def film(ctx):
   await client.change_presence(activity=discord.Activity(type=discord.ActivityType.custom, name="YouTube"))
 
-@client.command()
-async def nwd(ctx, cyfra1: int, cyfra2:int):
+
+@slash.slash(name="NWD",description="Pokazuje NWD danych liczb")
+async def nwd(ctx, liczba1: int, liczba2:int):
   print(uk + "NWD")
-  licznik=0
-  while cyfra1!=cyfra2:
-    licznik+=1
-    if cyfra1>cyfra2:
-        cyfra1=cyfra1-cyfra2 
+  while liczba1!=liczba2:
+    if liczba1>liczba2:
+        liczba1=liczba1-liczba2 
     else:
-        cyfra2=cyfra2-cyfra1
-  await ctx.send("Pętla wykonana {} razy".format(licznik))
-  await ctx.send("NWD to: {}".format(cyfra1))
+        liczba2=liczba2-liczba1
+  await ctx.send("NWD to: {}".format(liczba1))
 
 @client.command(aliases=['purge'])
 async def cls(ctx, amount=11):
@@ -108,6 +106,20 @@ async def cls(ctx, amount=11):
 # @slash.slash(description="TEST")
 # async def test(ctx):
 #   await ctx.send("test")
+#
+# @client.command()
+# async def nwd(ctx, cyfra1: int, cyfra2:int):
+#   print(uk + "NWD")
+#   licznik=0
+#   while cyfra1!=cyfra2:
+#     licznik+=1
+#     if cyfra1>cyfra2:
+#         cyfra1=cyfra1-cyfra2 
+#     else:
+#         cyfra2=cyfra2-cyfra1
+#   await ctx.send("Pętla wykonana {} razy".format(licznik))
+#   await ctx.send("NWD to: {}".format(cyfra1))
+
 
 load_dotenv()
 TOKEN = os.getenv("Token")
