@@ -10,9 +10,9 @@ from dotenv import load_dotenv
 import time
 
 client = commands.Bot(command_prefix="$")
-v = "v0.07"
+v = "v0.09"
 uk = "Użyto komendy "
-# client.remove_command("help")
+client.remove_command("help")
 buttons = ButtonsClient(client)
 slash = SlashCommand(client, sync_commands=True)
 
@@ -23,55 +23,25 @@ async def on_ready():
   print("Zalogowaliśmy się do {0.user}".format(client))
   print("█░█░█ █▀▀ █░░ █▀▀ █▀█ █▀▄▀█ █▀▀   █▀▄ ▄▀█ ░░█ █▀▄▀█ █▀█ █▄░█ █▀▄\n▀▄▀▄▀ ██▄ █▄▄ █▄▄ █▄█ █░▀░█ ██▄   █▄▀ █▀█ █▄█ █░▀░█ █▄█ █░▀█ █▄▀")
 
-@slash.slash(name="ping", description="Pokazuje opóźnienie jakie ma bot")
+@slash.slash(description="Pokazuje opóźnienie jakie ma bot")
 async def ping(ctx):
   print(uk + "/Ping")
   await ctx.send(f"Pong {round(client.latency * 1000)}ms")
+
+@slash.slash(name="help", description="Pokazuje spis komend")
+async def help(ctx):
+  print(uk + "help")
+  h = discord.Embed(title="Spis wszystkich komend!", description="Prefix bota to $", colour=0x37AEF9)
+  h.add_field(name="ping", value="Pokazuje opóźnienie bota", inline=False)
+  h.add_field(name="nwd", value="Oblicza NWD podanych liczb", inline=False)
+  h.add_field(name="info", value="Informacje o bocie", inline=False)
+
+  await ctx.send(embed=h)
 
 @client.command(name="ping")
 async def ping(ctx):
   print(uk + "Ping")  
   await ctx.send(f"Pong! {round(client.latency * 1000)}ms")
-
-@client.command()
-async def status(ctx):
-  await buttons.send(
-    content="Wybierz status!",
-    channel=ctx.channel.id,
-    components=[
-      ActionRow([
-        Button(
-          label="Gra",
-          style=ButtonType().Primary,
-          custom_id="game"),
-        Button(
-          label="Stream",
-          style=ButtonType().Primary,
-          custom_id="live"),
-        Button(
-          label="Słuchanie muzyki",
-          style=ButtonType().Primary,
-          custom_id="music"),
-        Button(
-          label="Oglądanie YT",
-          style=ButtonType().Primary,
-          custom_id="film")
-      ])
-    ]
-  )
-
-@buttons.click
-async def game(ctx):
-  await client.change_presence(activity=discord.Game(name="Minecraft <3")) 
-@buttons.click
-async def live(ctx):
-  await client.change_presence(activity=discord.Streaming(name="Life", url="https://www.twitch.tv/dajmondnull"))
-@buttons.click
-async def music(ctx):
-  await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="Polish Rap"))
-@buttons.click
-async def film(ctx):
-  await client.change_presence(activity=discord.Activity(type=discord.ActivityType.custom, name="YouTube"))
 
 
 @slash.slash(name="NWD",description="Pokazuje NWD danych liczb")
@@ -97,6 +67,16 @@ async def cls(ctx, amount=11):
     await ctx.send("Wiadomości zostały usunięte!")
     time.sleep(1)
     await ctx.channel.purge(limit=1)
+
+@slash.slash(name="info", description="Informacje o bocie")
+async def info(ctx):
+    info = discord.Embed(title="Informacje o bocie", description="Tutaj znajdują się najważniejsze informacje o bocie", color=0x0176BD)
+    info.add_field(name="Nazwa:", value="{0.user}".format(client), inline=False)
+    info.add_field(name="Autor:", value="Dajmond", inline=False)
+    info.add_field(name="Wersja:", value=v, inline=False)
+    info.add_field(name="GitHub:", value="https://github.com/DajmondFM/Dajmond-Bot", inline=False)
+    info.add_field(name="Data stworzenia:", value="23.09.2021", inline=False )
+    await ctx.send(embed=info)
 
 #test
 # @client.command()
