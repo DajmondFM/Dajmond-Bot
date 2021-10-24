@@ -7,9 +7,8 @@
 <u><i>Rozpoczęcie tworzenia go datuje się na 23.09.2021</i></u><br>
 
 <i><s>Nie planowane wstrzymanie prac nad botem na czas dodania komend slash do biblioteki nextcord.</s></i> <br>
-Walić [Nextcord'a](https://github.com/nextcord/nextcord), jak narazie zostane przy [discord.py](https://github.com/Rapptz/discord.py) dopuki [nextcord](https://github.com/nextcord/nextcord) nie wprowadzi slash commands.<br>
-Szybka zmiana zdania jednak poczekam aż [Nextcord](https://github.com/nextcord/nextcord) wprowadzi te slash command.
-
+<i><s>Walić [Nextcord'a](https://github.com/nextcord/nextcord), jak narazie zostane przy [discord.py](https://github.com/Rapptz/discord.py) dopuki [nextcord](https://github.com/nextcord/nextcord) nie wprowadzi slash commands.</s></i><br>
+Po dłuższej prubie pracy z [discord.py](https://github.com/Rapptz/discord.py) dochodzę do wniosku iż niemożliwe jest wprowadzenie slash command nawet poprzez inne biblioteki wtakim razie pozostaje czekać na [Nextcord'a](https://github.com/nextcord/nextcord).<br>
 <details> <summary><b>Wstrzymanie prac</b></summary>
 <details> <summary><b>#1</b> </summary>
 <i>Rozpoczęcie 25.09.2021 <br>
