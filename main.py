@@ -1,5 +1,4 @@
 import discord
-from discord import message, channel
 from discord.ext import commands, tasks
 # from discord_buttons_plugin import  *
 import random
@@ -8,7 +7,7 @@ from dotenv import load_dotenv
 import time
 
 client = commands.Bot(command_prefix="$")
-v = "v0.10"
+v = "v0.11"
 uk = "Użyto komendy "
 client.remove_command("help")
 # buttons = ButtonsClient(client)
@@ -32,13 +31,14 @@ async def help(ctx):
   h.add_field(name="ping", value="Pokazuje opóźnienie bota", inline=False)
   h.add_field(name="nwd", value="Oblicza NWD podanych liczb", inline=False)
   h.add_field(name="info", value="Informacje o bocie", inline=False)
+  h.add_field(name="ban & kick", value="Banowanie i kickowanie użytkowników. Wymaga permisji.", inline=False)
 
   await ctx.send(embed=h)
 
-@client.command(name="ping")
-async def ping(ctx):
-  print(uk + "Ping")  
-  await ctx.send(f"Pong! {round(client.latency * 1000)}ms")
+# @client.command(name="ping")
+# async def ping(ctx):
+#   print(uk + "Ping")  
+#   await ctx.send(f"Pong! {round(client.latency * 1000)}ms")
 
 
 @client.slash_command(name="nwd",description="Pokazuje NWD danych liczb")
@@ -75,6 +75,25 @@ async def info(ctx):
     info.add_field(name="Data stworzenia:", value="23.09.2021", inline=False )
     await ctx.send(embed=info)
 
+@client.slash_command(name="ban", description="Zbanuj użytkownika. Wymaga permisji.")
+async def ban(ctx, member: discord.Member, *, reason=None):
+  if(not ctx.author.guild_permissions.ban_members):
+    await ctx.reply("Nie masz permisji!")
+    time.sleep(1)
+    await ctx.channel.purge(limit=1)
+  else:
+    await member.ban(reason=reason)
+    await ctx.send(f"{member} został zbanowany przez {ctx.author}.")
+
+@client.slash_command(name="kick", description="Wyrzuć użytkownika. Wymaga permisji.")
+async def kick(ctx, member: discord.Member, *, reason=None):
+  if(not ctx.author.guild_permissions.kick_members):
+    await ctx.reply("Nie masz permisji!")
+    time.sleep(1)
+    await ctx.channel.purge(limit=1)
+  else:
+    await member.kick(reason=reason)
+    await ctx.send(f"{member} został wyrzucony przez {ctx.author}.")
 
 #TODO Przepisanie całego kody z Dajmond mini do tego
 
