@@ -8,6 +8,7 @@
 0.07 == Add cls command <br>
 0.08 == Add help command <br>
 0.09 == Add info command <br>
+0.10 == Update to pycord <br>
 
 <br><br>
 # ChangeLog PL
@@ -20,3 +21,4 @@
 0.07 == Dodanie komendy cls <br>
 0.08 == Dodanie komendy help <br>
 0.09 == Dodanie komendy info <br>
+0.10 == Aktualizacja do Pycord <br>
