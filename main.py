@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 import time
 
 client = commands.Bot(command_prefix="$")
-v = "v0.11"
+v = "v0.12"
 uk = "Użyto komendy "
 client.remove_command("help")
 # buttons = ButtonsClient(client)
@@ -22,7 +22,7 @@ async def on_ready():
 @client.slash_command(description="Pokazuje opóźnienie jakie ma bot")
 async def ping(ctx):
   print(uk + "/Ping")
-  await ctx.send(f"Pong {round(client.latency * 1000)}ms")
+  await ctx.respond(f"Pong {round(client.latency * 1000)}ms")
 
 @client.slash_command(name="help", description="Pokazuje spis komend")
 async def help(ctx):
@@ -77,6 +77,7 @@ async def info(ctx):
 
 @client.slash_command(name="ban", description="Zbanuj użytkownika. Wymaga permisji.")
 async def ban(ctx, member: discord.Member, *, reason=None):
+  print(uk + "ban")
   if(not ctx.author.guild_permissions.ban_members):
     await ctx.reply("Nie masz permisji!")
     time.sleep(1)
@@ -87,6 +88,7 @@ async def ban(ctx, member: discord.Member, *, reason=None):
 
 @client.slash_command(name="kick", description="Wyrzuć użytkownika. Wymaga permisji.")
 async def kick(ctx, member: discord.Member, *, reason=None):
+  print(uk + "kick")
   if(not ctx.author.guild_permissions.kick_members):
     await ctx.reply("Nie masz permisji!")
     time.sleep(1)

@@ -10,6 +10,7 @@
 0.09 == Add info command <br>
 0.10 == Update to Pycord <br>
 0.11 == Add commends ban and kick <br>
+0.12 == Small Fixes <br>
 
 <br><br>
 # ChangeLog PL
@@ -24,3 +25,4 @@
 0.09 == Dodanie komendy info <br>
 0.10 == Aktualizacja do Pycord <br>
 0.11 == Dodanie komend ban i kick <br>
+0.12 == Małe poprawki <br>
