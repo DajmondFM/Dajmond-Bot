@@ -32,6 +32,7 @@ async def help(ctx):
   h.add_field(name="nwd", value="Oblicza NWD podanych liczb", inline=False)
   h.add_field(name="info", value="Informacje o bocie", inline=False)
   h.add_field(name="ban & kick", value="Banowanie i kickowanie użytkowników. Wymaga permisji.", inline=False)
+  h.add_field(name="cls", value="Czyszczenie kanału. Wymaga permisji.", inline=False)
 
   await ctx.send(embed=h)
 
@@ -51,19 +52,6 @@ async def nwd(ctx, liczba1: int, liczba2:int):
         liczba2=liczba2-liczba1
   await ctx.send("NWD to: {}".format(liczba1))
 
-@client.command(aliases=['purge'])
-async def cls(ctx, amount=11):
-  if(not ctx.author.guild_permissions.manage_messages):
-    await ctx.reply("Nie masz permisji!")
-    return
-  amount = amount+1
-  if amount > 101:
-    await ctx.reply("Nie mogę usunąć więcej niż 100 wiadomość")
-  else:
-    await ctx.channel.purge(limit=amount)
-    await ctx.send("Wiadomości zostały usunięte!")
-    time.sleep(1)
-    await ctx.channel.purge(limit=1)
 
 @client.slash_command(name="info", description="Informacje o bocie")
 async def info(ctx):
@@ -74,6 +62,23 @@ async def info(ctx):
     info.add_field(name="GitHub:", value="https://github.com/DajmondFM/Dajmond-Bot", inline=False)
     info.add_field(name="Data stworzenia:", value="23.09.2021", inline=False )
     await ctx.send(embed=info)
+
+@client.slash_command(name="cls", description="Czyści kanał", aliases=['purge'])
+async def cls(ctx, ilosc:int =11):
+  if(not ctx.author.guild_permissions.manage_messages):
+    await ctx.respond("Nie masz permisji!")
+    print("Nie"+ uk+ "cls")
+    return
+  ilosc = ilosc+1
+  if ilosc > 101:
+    await ctx.respond("Nie mogę usunąć więcej niż 100 wiadomość")
+    print("Nie"+ uk+ "cls")
+  else:
+    await ctx.channel.purge(limit=ilosc)
+    await ctx.respond("Wiadomości zostały usunięte!")
+    print(uk+"cls")
+    time.sleep(1)
+    await ctx.channel.purge(limit=1)
 
 @client.slash_command(name="ban", description="Zbanuj użytkownika. Wymaga permisji.")
 async def ban(ctx, member: discord.Member, *, reason=None):
@@ -96,6 +101,8 @@ async def kick(ctx, member: discord.Member, *, reason=None):
   else:
     await member.kick(reason=reason)
     await ctx.send(f"{member} został wyrzucony przez {ctx.author}.")
+
+
 
 #TODO Przepisanie całego kody z Dajmond mini do tego
 
