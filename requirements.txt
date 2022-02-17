@@ -1,4 +1,4 @@
-py-cord=2.0.0b1
-Flask=2.0.1
-discord-buttons-plugin=0.1.2
-python-dotenv=0.19.0
+py-cord==2.0.0b1
+Flask==2.0.1
+discord-buttons-plugin==0.1.2
+python-dotenv==0.19.0
