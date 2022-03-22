@@ -23,5 +23,5 @@ Zakończenie 30.09.2021</i></details>
 Zakończenie 15.02.2022</i></details>
 
 <details> <summary><b>#3</b> </summary>
-<i>Rozpoczęcie 22.03.2022 <br>
+<i>Rozpoczęcie 25.03.2022 <br>
  Zakończenie ??.??.????</i></details></details>
