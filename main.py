@@ -1,13 +1,12 @@
 import discord
-from discord.ext import commands, tasks
-# from discord_buttons_plugin import  *
-import random
+from discord.ext import commands
 import os
 from dotenv import load_dotenv
 import time
 
+
 client = commands.Bot(command_prefix="$")
-v = "v0.12"
+v = "v0.14"
 uk = "Użyto komendy "
 client.remove_command("help")
 # buttons = ButtonsClient(client)
@@ -17,6 +16,7 @@ client.remove_command("help")
 async def on_ready():
   await client.change_presence(activity=discord.Game("Aktualna wersja bota to " + v))
   print("Zalogowaliśmy się do {0.user}".format(client))
+  # print(f"{client.user} jest włączony")
   print("█░█░█ █▀▀ █░░ █▀▀ █▀█ █▀▄▀█ █▀▀   █▀▄ ▄▀█ ░░█ █▀▄▀█ █▀█ █▄░█ █▀▄\n▀▄▀▄▀ ██▄ █▄▄ █▄▄ █▄█ █░▀░█ ██▄   █▄▀ █▀█ █▄█ █░▀░█ █▄█ █░▀█ █▄▀")
 
 @client.slash_command(description="Pokazuje opóźnienie jakie ma bot")
@@ -33,6 +33,8 @@ async def help(ctx):
   h.add_field(name="info", value="Informacje o bocie", inline=False)
   h.add_field(name="ban & kick", value="Banowanie i kickowanie użytkowników. Wymaga permisji.", inline=False)
   h.add_field(name="cls", value="Czyszczenie kanału. Wymaga permisji.", inline=False)
+  h.add_field(name="games", value="Wyszukuje cracków gier", inline=False)
+  h.add_field(name="chat", value="Chat bot z wsparciem AI od OpenAi", inline=False)
 
   await ctx.send(embed=h)
 
@@ -103,10 +105,38 @@ async def kick(ctx, member: discord.Member, *, reason=None):
     await ctx.send(f"{member} został wyrzucony przez {ctx.author}.")
 
 
+@client.slash_command(name="games", description="Wyszukuje cracki gier")
+async def games(ctx, *, game: str):
+  print(uk + "games")
+  await ctx.respond(f"https://crackhub.site/?s={game.replace(' ', '+')} \nhttps://gog-games.com/search/{game.replace(' ', '+')} \nhttps://steamrip.com/?s={game.replace(' ', '+')} \nhttps://steamunlocked.net/?s={game.replace(' ', '+')} \nhttps://agfy.co/?s={game.replace(' ', '+')} \nhttps://crackhub.site/?s={game.replace(' ', '+')} \nhttps://gog-games.com/search/{game.replace(' ', '+')} \nhttps://steamrip.com/?s={game.replace(' ', '+')} \nhttps://steamunlocked.net/?s={game.replace(' ', '+')} \nhttps://agfy.co/?s={game.replace(' ', '+')}")
+
 
 #TODO Przepisanie całego kody z Dajmond mini do tego
 
+#TODO muzyka, przywitanie, zarty 
 
+# OpenAI Chat
+import openai
 load_dotenv()
+openai.api_key = os.getenv('OpenAi_token')
+
+@client.slash_command(name="chat", description="cos")
+async def chat(ctx, prompt: str):
+  model_engine = "text-davinci-003"
+  completion = openai.Completion.create(
+    engine=model_engine,
+    prompt=prompt,
+    max_tokens=1024,
+    n=1,
+    stop=None,
+    temperature=0.5,
+  )
+  response = completion.choices[0].text
+  await ctx.respond(response)
+
+
+
+
+
 TOKEN = os.getenv("Token")
 client.run(TOKEN)

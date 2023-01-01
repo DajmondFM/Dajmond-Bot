@@ -11,6 +11,8 @@
 0.10 == Update to Pycord <br>
 0.11 == Add commends ban and kick <br>
 0.12 == Small Fixes <br>
+0.13 == Add games command <br>
+0.14 == Add chat command <br>
 
 <br><br>
 # ChangeLog PL
@@ -26,3 +28,5 @@
 0.10 == Aktualizacja do Pycord <br>
 0.11 == Dodanie komend ban i kick <br>
 0.12 == Małe poprawki <br>
+0.13 == Dodanie komendy games <br>
+0.14 == Dodanie komendy chat <br>
