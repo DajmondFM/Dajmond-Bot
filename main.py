@@ -120,7 +120,7 @@ import openai
 load_dotenv()
 openai.api_key = os.getenv('OpenAi_token')
 
-@client.slash_command(name="chat", description="cos")
+@client.slash_command(name="chat", description="Chat bot od OpenAi")
 async def chat(ctx, prompt: str):
   model_engine = "text-davinci-003"
   completion = openai.Completion.create(

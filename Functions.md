@@ -1,5 +1,5 @@
 # Aktualne Funkcje bota
-<i>Wszystkie komendy są używane za pomocą /</i> <br>
+<i>Wszystkie komendy są używane za pomocą/</i> <br>
 W bocie znajdują się takie komendy jak:
 - ping 
 - help 
@@ -8,3 +8,5 @@ W bocie znajdują się takie komendy jak:
 - cls 
 - ban
 - kick
+- games
+- chat
